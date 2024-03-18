@@ -1,27 +1,32 @@
-import Fastify from 'fastify';
-import Swagger from '@fastify/swagger';
-import SwaggerUI from '@fastify/swagger-ui';
+import Fastify from "fastify";
+import Swagger from "@fastify/swagger";
+import SwaggerUI from "@fastify/swagger-ui";
+require("dotenv").config();
 
-import { swaggerOptions, swaggerUiOptions } from './swagger-config';
+import { swaggerOptions, swaggerUiOptions } from "./swagger-config";
+import { connect } from "./db/postgres";
 
+// app config
 const port = Number(process.env.PORT) || 3000;
 
 const app = Fastify({
-    logger: true,
+  logger: true,
 });
 
+// bootstrap
 (async () => {
+  await app.register(Swagger, swaggerOptions);
+  await app.register(SwaggerUI, swaggerUiOptions);
 
-    await app.register(Swagger, swaggerOptions);
-    await app.register(SwaggerUI, swaggerUiOptions);
+  await connect();
 
-    app.listen({ port }, (err) => {
-        if (err) {
-            console.log(err.message);
-            return;
-        }
+  app.listen({ port }, (err) => {
+    if (err) {
+      console.log(err.message);
+      return;
+    }
 
-        console.log(`Server started on http://localhost:${port}`);
-        console.log(`Server documentation http://localhost:${port}/api/docs`);
-    })
-})()
+    console.log(`Server started on http://localhost:${port}`);
+    console.log(`Server documentation http://localhost:${port}/api/docs`);
+  });
+})();
