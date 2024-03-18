@@ -5,6 +5,8 @@
         "moduleResolution": "node",
     },
     "ts-node": { 
+        "experimentalSpecifierResolution": "node",
+        "transpileOnly": true,
         "esm": true 
     } 
 }
