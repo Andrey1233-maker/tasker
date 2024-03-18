@@ -1,0 +1,18 @@
+{
+  "type": "module",
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server lol",
+  "main": "index.ts",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "test": "test"
+  },
+  "author": "Andrew",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^4.26.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
+  }
+}
