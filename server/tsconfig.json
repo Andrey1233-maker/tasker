@@ -2,7 +2,8 @@
   "compilerOptions": {
     "module": "es6",
     "target": "es5",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "experimentalDecorators": true
   },
   "ts-node": {
     "experimentalSpecifierResolution": "node",

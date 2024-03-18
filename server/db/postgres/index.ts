@@ -1,4 +1,5 @@
 import { Sequelize } from "sequelize";
+require("dotenv").config();
 
 let pool: Sequelize = null;
 
@@ -15,6 +16,7 @@ export const dataSource = () => {
         host: process.env["DB_HOST"],
         dialect: 'postgres',
         port: 6432,
+        logging: console.log,
     },
   );
   return pool;

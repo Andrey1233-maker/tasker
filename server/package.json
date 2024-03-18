@@ -15,8 +15,11 @@
   "dependencies": {
     "@fastify/swagger": "^8.14.0",
     "@fastify/swagger-ui": "^3.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
     "dotenv": "^16.4.5",
     "fastify": "^4.26.2",
+    "jsonwebtoken": "^9.0.2",
     "pg": "^8.11.3",
     "prettier": "^3.2.5",
     "sequelize": "^6.37.1",
@@ -25,6 +28,8 @@
     "typescript": "^5.4.2"
   },
   "devDependencies": {
+    "@types/sequelize": "^4.28.20",
+    "sequelize-typescript": "^2.1.6",
     "tsx": "^4.7.1"
   }
 }
