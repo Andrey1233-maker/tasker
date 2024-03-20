@@ -16,6 +16,8 @@ const app = Fastify({
 
 // bootstrap
 (async () => {
+  // app.register(require('@fastify/formbody'))
+  app.register(bodyParser.json())
   await app.register(Swagger, swaggerOptions);
   await app.register(SwaggerUI, swaggerUiOptions);
 
