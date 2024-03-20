@@ -13,21 +13,21 @@ export const dataSource = () => {
     process.env["DB_USER"],
     process.env["DB_PASS"],
     {
-        host: process.env["DB_HOST"],
-        dialect: 'postgres',
-        port: 6432,
-        logging: console.log,
+      host: process.env["DB_HOST"],
+      dialect: "postgres",
+      port: 6432,
+      logging: console.log,
     },
   );
   return pool;
 };
 
 export const connect = async () => {
-    const pool = dataSource();
-    try {
-        await pool.authenticate();
-        console.log('DB connected')
-    } catch (e) {
-        console.log(`DB not connected: ${e.message}`)
-    }
-}
+  const pool = dataSource();
+  try {
+    await pool.authenticate();
+    console.log("DB connected");
+  } catch (e) {
+    console.log(`DB not connected: ${e.message}`);
+  }
+};

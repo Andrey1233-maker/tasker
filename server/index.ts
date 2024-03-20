@@ -23,7 +23,7 @@ const app = Fastify({
 
   app.setErrorHandler(errorHandler);
 
-  await app.register(userRouter, { prefix: '/user' });
+  await app.register(userRouter, { prefix: "/user" });
 
   await connect();
 
