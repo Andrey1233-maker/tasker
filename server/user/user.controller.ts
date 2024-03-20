@@ -6,6 +6,7 @@ import * as userService from "./user.service";
 import { getValueFromUnknown } from "../utils/get-value";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { HttpExeprion } from "../utils/http-exeption";
+import { comparePassword } from "../utils";
 
 const userRouter = async (fastify, _options, next) => {
   // get user by uuid
@@ -24,9 +25,19 @@ const userRouter = async (fastify, _options, next) => {
 
   // login on system
   fastify.post("/sign-in", async (req: FastifyRequest, res: FastifyReply) => {
-    res.code(500).send({
-      message: "Coming soon...",
-    });
+    const email = getValueFromUnknown(req.body, 'email');
+    const password = getValueFromUnknown(req.body, 'password');
+
+    const { dataValues: user } = await userService.getUserByEmail(email);
+    
+    if (await comparePassword(password, user.password)) {
+      return { token: fastify.jwt.sign({ uuid: user.uuid })}
+    }
+
+    res.code(403);
+    return {
+      message: 'Wrong creds',
+    }
   });
 
   // registration on system
@@ -41,15 +52,13 @@ const userRouter = async (fastify, _options, next) => {
 
     const user = await userService.createUser(dto);
 
-    res.code(201);;
+    res.code(201);
     return user;
   });
 
   // update yourself
   fastify.patch("/:uuid", async (req: FastifyRequest, res: FastifyReply) => {
-    res.code(500).send({
-      message: "Coming soon...",
-    });
+
   });
 
   next();

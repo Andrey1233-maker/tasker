@@ -8,7 +8,7 @@ export const getUserByUuid = (uuid: string) =>
   userRepo.findOne({ where: { uuid } });
 
 export const getUserByEmail = (email: string) =>
-  userRepo.findOne({ where: { email } });
+  userRepo.findOne({ where: { email } }) as any;
 
 export const createUser = async (dto: CreateUserDto) => {
   const userWithEmail = await getUserByEmail(dto.email);

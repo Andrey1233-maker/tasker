@@ -1,6 +1,7 @@
 import Fastify from "fastify";
 import Swagger from "@fastify/swagger";
 import SwaggerUI from "@fastify/swagger-ui";
+import JWT from '@fastify/jwt';
 require("dotenv").config();
 
 import { swaggerOptions, swaggerUiOptions } from "./swagger-config";
@@ -17,7 +18,10 @@ const app = Fastify({
 
 // bootstrap
 (async () => {
-  // app.register(require('@fastify/formbody'))
+  app.register(JWT, {
+    secret: process.env.JWT_SECRET,
+  });
+
   await app.register(Swagger, swaggerOptions);
   await app.register(SwaggerUI, swaggerUiOptions);
 
