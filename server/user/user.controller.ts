@@ -17,6 +17,7 @@ const userRouter = async (fastify, _options, next) => {
 
     // get user by token
     fastify.get('/whoami', async (req: FastifyRequest, res: FastifyReply) => {
+
         res.code(500).send({
             message: 'Coming soon...',
         })
@@ -31,11 +32,13 @@ const userRouter = async (fastify, _options, next) => {
 
     // registration on system
     fastify.post('/sign-up', async (req: FastifyRequest, res: FastifyReply) => {
+        console.log(req.body)
+
         const body = req.body;
         const dto = plainToClass(CreateUserDto, body);
         const errors = await validate(dto);
 
-        if (errors.length > 0) { throw new HttpExeprion(400, 'Bad request'); }
+        if (errors.length > 0) { throw new HttpExeprion(400, errors.toString()); }
 
         const user = await userService.createUser(dto);
 

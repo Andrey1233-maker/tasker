@@ -6,5 +6,6 @@ export const errorHandler = (error: FastifyError, req: FastifyRequest, res: Fast
         address: req.url,
         date: new Date().toLocaleString(),
         code: error.statusCode ?? 500,
+        message: error.message,
     });
 }
