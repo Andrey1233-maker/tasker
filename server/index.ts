@@ -6,6 +6,7 @@ require("dotenv").config();
 import { swaggerOptions, swaggerUiOptions } from "./swagger-config";
 import { connect } from "./db/postgres";
 import userRouter from "./user/user.controller";
+import { errorHandler } from "./middlewares";
 
 // app config
 const port = Number(process.env.PORT) || 3000;
@@ -17,9 +18,10 @@ const app = Fastify({
 // bootstrap
 (async () => {
   // app.register(require('@fastify/formbody'))
-  app.register(bodyParser.json())
   await app.register(Swagger, swaggerOptions);
   await app.register(SwaggerUI, swaggerUiOptions);
+
+  app.setErrorHandler(errorHandler);
 
   await app.register(userRouter, { prefix: '/user' });
 
