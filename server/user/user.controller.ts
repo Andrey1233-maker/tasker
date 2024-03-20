@@ -7,6 +7,7 @@ import { getValueFromUnknown } from "../utils/get-value";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { HttpExeprion } from "../utils/http-exeption";
 import { comparePassword } from "../utils";
+import { authGuard } from "../middlewares/auth-guard";
 
 const userRouter = async (fastify, _options, next) => {
   // get user by uuid
@@ -17,10 +18,17 @@ const userRouter = async (fastify, _options, next) => {
   });
 
   // get user by token
-  fastify.get("/whoami", async (req: FastifyRequest, res: FastifyReply) => {
-    res.code(500).send({
-      message: "Coming soon...",
-    });
+  fastify.get("/whoami", {
+    preHandler: [authGuard],
+  }, 
+  async (req: FastifyRequest, res: FastifyReply) => {
+    if (req.user) {
+      res.code(200);
+      return userService.getUserByUuid(getValueFromUnknown(req.user, 'uuid'));
+    } else {
+      res.code(403);
+      return { message: 'Invalid token' };
+    }
   });
 
   // login on system
@@ -29,7 +37,7 @@ const userRouter = async (fastify, _options, next) => {
     const password = getValueFromUnknown(req.body, 'password');
 
     const { dataValues: user } = await userService.getUserByEmail(email);
-    
+
     if (await comparePassword(password, user.password)) {
       return { token: fastify.jwt.sign({ uuid: user.uuid })}
     }
