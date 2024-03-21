@@ -11,12 +11,10 @@ import { AuthPageService } from './auth-page.service';
   providers: [AuthPageService],
 })
 export class AuthPageComponent {
-  constructor(
-    private authPageService: AuthPageService,
-  ) {}
+  constructor(private authPageService: AuthPageService) {}
 
   onClick() {
-    console.log(this.authPageService)
-    this.authPageService.login('123', '123')
+    console.log(this.authPageService);
+    this.authPageService.login('123', '123');
   }
 }

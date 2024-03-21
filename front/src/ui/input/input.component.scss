@@ -1,13 +1,13 @@
 .input {
-    border: 1px solid #013b79;
-    border-radius: 4px;
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    background: #013b7910;
-    color: #012852;
-    font-size: 16px;
-    &::placeholder {
-        color: #0052a9;
-    }
+  border: 1px solid #013b79;
+  border-radius: 4px;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  background: #013b7910;
+  color: #012852;
+  font-size: 16px;
+  &::placeholder {
+    color: #0052a9;
+  }
 }
