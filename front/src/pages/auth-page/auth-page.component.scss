@@ -1,0 +1,29 @@
+.auth-page {
+    border-radius: 4px;
+    padding: 16px;
+    background: white;
+    width: 40vw;
+    box-shadow: 0 4px 8px -4px #013b79;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box;
+
+    &-wrapper {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.auth-title {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 32px;
+    color: #002041;
+    margin: 0;
+}
