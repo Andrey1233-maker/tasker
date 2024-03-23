@@ -1,12 +1,13 @@
 import { DataTypes } from "sequelize";
 import { dataSource } from "../../db/postgres";
+import { tableRepo } from "../../table/model/table.entity";
 
 export type TUser = {
   uuid: string;
   email: string;
   password: string;
   name: string;
-}
+};
 
 export const userRepo = dataSource().define("users", {
   uuid: {

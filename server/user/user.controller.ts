@@ -18,34 +18,37 @@ const userRouter = async (fastify, _options, next) => {
   });
 
   // get user by token
-  fastify.get("/whoami", {
-    preHandler: [authGuard],
-  }, 
-  async (req: FastifyRequest, res: FastifyReply) => {
-    if (req.user) {
-      res.code(200);
-      return userService.getUserByUuid(getValueFromUnknown(req.user, 'uuid'));
-    } else {
-      res.code(403);
-      return { message: 'Invalid token' };
-    }
-  });
+  fastify.get(
+    "/whoami",
+    {
+      preHandler: [authGuard],
+    },
+    async (req: FastifyRequest, res: FastifyReply) => {
+      if (req.user) {
+        res.code(200);
+        return userService.getUserByUuid(getValueFromUnknown(req.user, "uuid"));
+      } else {
+        res.code(403);
+        return { message: "Invalid token" };
+      }
+    },
+  );
 
   // login on system
   fastify.post("/sign-in", async (req: FastifyRequest, res: FastifyReply) => {
-    const email = getValueFromUnknown(req.body, 'email');
-    const password = getValueFromUnknown(req.body, 'password');
+    const email = getValueFromUnknown(req.body, "email");
+    const password = getValueFromUnknown(req.body, "password");
 
     const { dataValues: user } = await userService.getUserByEmail(email);
 
     if (await comparePassword(password, user.password)) {
-      return { token: fastify.jwt.sign({ uuid: user.uuid })}
+      return { token: fastify.jwt.sign({ uuid: user.uuid }) };
     }
 
     res.code(403);
     return {
-      message: 'Wrong creds',
-    }
+      message: "Wrong creds",
+    };
   });
 
   // registration on system
@@ -65,9 +68,7 @@ const userRouter = async (fastify, _options, next) => {
   });
 
   // update yourself
-  fastify.patch("/:uuid", async (req: FastifyRequest, res: FastifyReply) => {
-
-  });
+  fastify.patch("/:uuid", async (req: FastifyRequest, res: FastifyReply) => {});
 
   next();
 };

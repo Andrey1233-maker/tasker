@@ -1,14 +1,15 @@
 import Fastify from "fastify";
 import Swagger from "@fastify/swagger";
 import SwaggerUI from "@fastify/swagger-ui";
-import JWT from '@fastify/jwt';
-import cors from '@fastify/cors';
+import JWT from "@fastify/jwt";
+import cors from "@fastify/cors";
 require("dotenv").config();
 
 import { swaggerOptions, swaggerUiOptions } from "./swagger-config";
 import { connect } from "./db/postgres";
 import userRouter from "./user/user.controller";
 import { errorHandler } from "./middlewares";
+import tableRouter from "./table/table.controller";
 
 // app config
 const port = Number(process.env.PORT) || 3000;
@@ -20,8 +21,8 @@ const app = Fastify({
 // bootstrap
 (async () => {
   await app.register(cors, {
-    origin: '*'
-  })
+    origin: "*",
+  });
   app.register(JWT, {
     secret: process.env.JWT_SECRET,
   });
@@ -32,6 +33,7 @@ const app = Fastify({
   app.setErrorHandler(errorHandler);
 
   await app.register(userRouter, { prefix: "/user" });
+  await app.register(tableRouter, { prefix: "/table" });
 
   await connect();
 
