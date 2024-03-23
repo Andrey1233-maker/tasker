@@ -6,7 +6,8 @@ import { useEffect } from "react";
 import { useUser } from "./stores";
 import { getWhoami } from "./api";
 
-import "./App.css";
+import styles from "./App.module.scss";
+import { Container } from "./ui";
 
 function App() {
   const { token, setUser } = useUser((state) => state);
@@ -28,10 +29,11 @@ function App() {
   }, [token, setUser, mutate]);
 
   return (
-    <>
+    <div className={styles['page']}>
       <AuthPage />
       <Header />
-    </>
+      <Container>123</Container>
+    </div>
   );
 }
 

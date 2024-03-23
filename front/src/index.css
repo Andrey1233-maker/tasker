@@ -1,7 +1,12 @@
 body {
-  background: aliceblue;
+  background: rgb(209, 233, 255);
   margin: 0;
   padding: 0;
+  height: 100vh;
+}
+
+#root {
+  height: 100%;
 }
 
 * {
