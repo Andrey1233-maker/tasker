@@ -1,0 +1,32 @@
+.auth {
+    &-page {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #c4c4c4;
+    }
+
+    &-title {
+        font-size: 32px;
+        font-weight: bolder;
+        margin: 0;
+    }
+
+    &-block {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        min-width: 500px;
+        align-items: start;
+        width: 100%;
+    }
+
+    &-creds {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+}
