@@ -1,0 +1,40 @@
+.header {
+  height: 50px;
+  padding: 10px 30px;
+  background: white;
+  box-shadow: 0 4px 8px -4px royalblue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  &-title {
+    font-size: 24px;
+    font-weight: bolder;
+    margin: 0;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  &-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    &-email {
+        margin: 0;
+        font-style: italic;
+        font-size: 16px;
+    }
+
+    &-name {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+    }
+  }
+}

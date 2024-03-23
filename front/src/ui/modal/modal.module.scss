@@ -13,6 +13,7 @@
 
   &-closed {
     top: -100vh;
+    backdrop-filter: blur(0px);
   }
 
   position: fixed;
@@ -25,4 +26,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  backdrop-filter: blur(3px);
 }

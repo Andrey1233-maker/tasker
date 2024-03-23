@@ -9,5 +9,7 @@ export async function postLogin(email: string, password: string) {
     });
 
     return reesponse.data;
-  } catch (e) {}
+  } catch (e) {
+    return null;
+  }
 }

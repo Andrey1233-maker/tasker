@@ -3,36 +3,23 @@ import { Button, Modal, Input } from "../../ui";
 import styles from "./auth-page.module.scss";
 import { useMutation } from "@tanstack/react-query";
 import { postLogin } from "../../api";
+import { useUser } from "../../stores";
 
 export function AuthPage() {
-  const [isOpen, setIsOpen] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { user, setToken } = useUser((state) => state);
 
-  const { data, mutate } = useMutation({
+  const { mutate } = useMutation({
     mutationKey: ["auth"],
     mutationFn: async () => {
       const response = await postLogin(email, password);
-      return response.token ?? "";
+      setToken(response?.token ?? null);
     },
   });
 
-  useEffect(() => {
-    console.log(data)
-    if (data) {
-      setIsOpen(false);
-    } else {
-      setIsOpen(true);
-    }
-  }, [data]);
-
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={() => {
-        setIsOpen((prev) => !prev);
-      }}
-    >
+    <Modal isOpen={!user} onClose={() => {}}>
       <div className={styles["auth-block"]}>
         <p className={styles["auth-title"]}>Sosala.Tasks</p>
         <div className={styles["auth-creds"]}>
