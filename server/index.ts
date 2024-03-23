@@ -30,10 +30,10 @@ const app = Fastify({
   await app.register(Swagger, swaggerOptions);
   await app.register(SwaggerUI, swaggerUiOptions);
 
-  app.setErrorHandler(errorHandler);
-
   await app.register(userRouter, { prefix: "/user" });
   await app.register(tableRouter, { prefix: "/table" });
+
+  app.setErrorHandler(errorHandler);
 
   await connect();
 

@@ -1,9 +1,8 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 
-export const authGuard = (req: FastifyRequest, res: FastifyReply, done) => {
+export const authGuard = async (req: FastifyRequest, res: FastifyReply) => {
   try {
-    req.jwtVerify();
-    done();
+    await req.jwtVerify();
   } catch (error) {
     res.code(403).send({ message: "Access denied" });
   }
