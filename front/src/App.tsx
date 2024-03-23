@@ -1,11 +1,8 @@
-import { AuthPage } from './pages'
-import './App.css'
+import { AuthPage } from "./pages";
+import "./App.css";
 
 function App() {
-
-  return (
-    <AuthPage />
-  )
+  return <AuthPage />;
 }
 
-export default App
+export default App;

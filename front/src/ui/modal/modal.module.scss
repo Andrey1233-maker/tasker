@@ -1,28 +1,28 @@
 .modal {
-    &-wrapper {
-        padding: 16px;
-        border-radius: 4px;
-        box-shadow: 0 4px 8px -4px royalblue;
-        background: white;
-        box-sizing: border-box;
-    }
+  &-wrapper {
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px -4px royalblue;
+    background: white;
+    box-sizing: border-box;
+  }
 
-    &-open {
-        top: 0;
-    }
+  &-open {
+    top: 0;
+  }
 
-    &-closed {
-        top: -100vh;
-    }
+  &-closed {
+    top: -100vh;
+  }
 
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    left: 0;
-    transition: 1s;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  transition: 1s;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

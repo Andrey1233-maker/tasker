@@ -1,1 +1,1 @@
-export * from './auth-page/auth-page';
+export * from "./auth-page/auth-page";
