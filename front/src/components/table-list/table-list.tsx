@@ -1,4 +1,6 @@
 import { TTable } from "../../types"
+import { CreateTableItem } from "./create-table";
+import { TableListItem } from './table-list-item'
 import styles from './table-list.module.scss';
 
 export function TableList({ tables }: ITableListProps) {
@@ -7,7 +9,8 @@ export function TableList({ tables }: ITableListProps) {
         <div className={styles['table-list']}>
             <p className={styles['table-list-title']}>Your tables</p>
             <div className={styles['table-list-list']}>
-                {tables.map((table) => table.uuid)}
+                <CreateTableItem />
+                {tables.map((table) => <TableListItem table={table} key={table.uuid} />)}
             </div>
         </div>
     )
