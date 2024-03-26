@@ -18,8 +18,8 @@ export function Header() {
       return (
         <div className={styles["header-content"]}>
           <div className={styles["header-user"]}>
-            <p className={styles['header-user-name']}>{user.name}</p>
-            <p className={styles['header-user-email']}>{user.email}</p>
+            <p className={styles["header-user-name"]}>{user.name}</p>
+            <p className={styles["header-user-email"]}>{user.email}</p>
           </div>
           <Button onClick={logout}>Logout</Button>
         </div>

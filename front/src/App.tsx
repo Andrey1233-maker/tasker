@@ -28,7 +28,7 @@ function App() {
   }, [token, setUser, mutate]);
 
   return (
-    <div className={styles['page']}>
+    <div className={styles["page"]}>
       <AuthPage />
       <Header />
       <TableListPage />

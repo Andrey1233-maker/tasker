@@ -1,0 +1,14 @@
+.create-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 500px;
+  align-items: start;
+  width: 100%;
+
+  &-title {
+    font-size: 32px;
+    font-weight: bolder;
+    margin: 0;
+  }
+}
