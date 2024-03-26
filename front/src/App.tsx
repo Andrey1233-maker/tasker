@@ -7,6 +7,8 @@ import { useUser } from "./stores";
 import { getWhoami } from "./api";
 
 import styles from "./App.module.scss";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router";
 
 function App() {
   const { token, setUser } = useUser((state) => state);
@@ -31,7 +33,7 @@ function App() {
     <div className={styles["page"]}>
       <AuthPage />
       <Header />
-      <TableListPage />
+      <RouterProvider router={router}/>
     </div>
   );
 }
