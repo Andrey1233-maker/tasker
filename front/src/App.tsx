@@ -1,14 +1,14 @@
 import { useMutation } from "@tanstack/react-query";
+import { RouterProvider } from "react-router-dom";
 
-import { AuthPage, TableListPage } from "./pages";
+import { AuthPage } from "./pages";
 import { Header } from "./components";
 import { useEffect } from "react";
 import { useUser } from "./stores";
 import { getWhoami } from "./api";
+import { router } from "./router";
 
 import styles from "./App.module.scss";
-import { RouterProvider } from "react-router-dom";
-import { router } from "./router";
 
 function App() {
   const { token, setUser } = useUser((state) => state);
