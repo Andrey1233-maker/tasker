@@ -15,11 +15,6 @@ export const tableRepo = dataSource().define("tables", {
     allowNull: false,
     defaultValue: "Untitled",
   },
-  description: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    defaultValue: "Untitled",
-  },
   userUuid: {
     type: DataTypes.UUID,
     references: {
