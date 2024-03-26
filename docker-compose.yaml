@@ -18,5 +18,23 @@ services:
       - pgdata:/var/lib/postgresql/data
     restart: always
 
+  server:
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/home/node/app
+
+  front:
+    build:
+      context: .
+      dockerfile: ./front/Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./src:/home/node/app
+
 volumes:
   pgdata:
