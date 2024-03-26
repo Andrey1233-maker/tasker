@@ -1,10 +1,9 @@
 import { DataTypes } from "sequelize";
 import { dataSource } from "../../db/postgres";
-import { userRepo } from "../../user/models/user.entity";
+import { columnRepo } from "../../column/models/column.entity";
 
-export type TTable = {};
 
-export const tableRepo = dataSource().define("tables", {
+export const taskRepo = dataSource().define("tables", {
   uuid: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
@@ -20,15 +19,15 @@ export const tableRepo = dataSource().define("tables", {
     allowNull: false,
     defaultValue: "Untitled",
   },
-  userUuid: {
+  columnUuid: {
     type: DataTypes.UUID,
     references: {
-      model: userRepo,
+      model: columnRepo,
       key: "uuid",
     },
   },
 });
 
-tableRepo.belongsTo(userRepo);
-userRepo.hasMany(tableRepo);
-tableRepo.sync();
+taskRepo.belongsTo(columnRepo);
+columnRepo.hasMany(taskRepo);
+columnRepo.sync();

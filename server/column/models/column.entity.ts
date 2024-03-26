@@ -1,10 +1,8 @@
 import { DataTypes } from "sequelize";
 import { dataSource } from "../../db/postgres";
-import { userRepo } from "../../user/models/user.entity";
+import { tableRepo } from "../../table/model/table.entity";
 
-export type TTable = {};
-
-export const tableRepo = dataSource().define("tables", {
+export const columnRepo = dataSource().define("tables", {
   uuid: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
@@ -20,15 +18,15 @@ export const tableRepo = dataSource().define("tables", {
     allowNull: false,
     defaultValue: "Untitled",
   },
-  userUuid: {
+  tableUuid: {
     type: DataTypes.UUID,
     references: {
-      model: userRepo,
+      model: tableRepo,
       key: "uuid",
     },
   },
 });
 
-tableRepo.belongsTo(userRepo);
-userRepo.hasMany(tableRepo);
-tableRepo.sync();
+columnRepo.belongsTo(tableRepo);
+tableRepo.hasMany(columnRepo);
+columnRepo.sync();

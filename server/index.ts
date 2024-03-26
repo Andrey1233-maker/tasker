@@ -10,6 +10,7 @@ import { connect } from "./db/postgres";
 import userRouter from "./user/user.controller";
 import { errorHandler } from "./middlewares";
 import tableRouter from "./table/table.controller";
+import { columnRouter } from "./column/column.controller";
 
 // app config
 const port = Number(process.env.PORT) || 3000;
@@ -32,6 +33,7 @@ const app = Fastify({
 
   await app.register(userRouter, { prefix: "/user" });
   await app.register(tableRouter, { prefix: "/table" });
+  await app.register(columnRouter, { prefix: "/column" });
 
   app.setErrorHandler(errorHandler);
 
