@@ -12,4 +12,16 @@ body {
 * {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: rgb(4, 15, 48);
+  user-select: none;
 }
+
+[draggable="true"] {
+  /*
+ To prevent user selecting inside the drag source
+*/
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+

@@ -1,13 +1,24 @@
-import { useParams } from "react-router-dom"
+import { Column } from "../../components";
+
+import styles from './table-page.module.scss';
 
 export function TablePage() {
 
-    const { uuid } = useParams();
+    const column = {
+        name: 'ToDo',
+        tasks: [{
+            name: 'task123'
+        }],
+    }
+
     return (
         <div>
             <p></p>
-            <div>
-
+            <div className={styles['table-page-columns']}>
+                <Column column={column}/>
+                <Column column={column}/>
+                <Column column={column}/>
+                <Column column={column}/>
             </div>
         </div>
     )
